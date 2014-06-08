@@ -1,0 +1,6 @@
+energy<-read.csv("C:/Users/VMSG/Desktop/PARALELOS/ESDA R COURSERA/household_power_consumption.txt",header=TRUE, sep=";", dec=".")
+energy$D<-as.Date(energy$Date,format="%d/%m/%Y")
+energ2<-subset(energy,energy$D>"2007-01-31"& energy$D<"2007-02-03")
+energ2$T<-paste(energ2$D,energ2$Time)
+energ2$t2<-strptime(energ2$T,format="%Y-%m-%d %H:%M:%S" )
+plot(x=energ2$t2,y=as.numeric(energ2$Global_active_power),xlab="Day",ylab="Global Active Power(Watts)",main="Global Active Power",type="l")
