@@ -1,0 +1,8 @@
+energy<-read.csv("C:/Users/VMSG/Desktop/PARALELOS/ESDA R COURSERA/household_power_consumption.txt",header=TRUE, sep=";", dec=".")
+energy$D<-as.Date(energy$Date,format="%d/%m/%Y")
+energ2<-subset(energy,energy$D>"2007-01-31"& energy$D<"2007-02-03")
+energ2$T<-paste(energ2$D,energ2$Time)
+energ2$t2<-strptime(energ2$T,format="%Y-%m-%d %H:%M:%S" )
+plot(x=energ2$t2,y=energ2$Sub_metering_1,xlab="Day",ylab="Energy sub metering",type="l",col="black")
+lines(x=energ2$t2,y=energ2$Sub_metering_2,type="l",col="red")
+lines(x=energ2$t2,y=energ2$Sub_metering_3,type="l",col="blue")
